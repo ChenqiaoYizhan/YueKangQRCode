@@ -40,7 +40,7 @@ const Home = (props) => {
     <View style={styles.all}>
       <View style={{ height: 44 }} />
       <Image
-        source={require('./images/wechat_tabbar.jpg')}
+        source={require('../../images/wechat_tabbar.jpg')}
         style={styles.wechatHeader}
       />
       <ScrollView style={{ flex: 1 }}>
@@ -50,7 +50,7 @@ const Home = (props) => {
             <View style={{ width: 4 }} />
             <Image
               style={styles.imageCityMore}
-              source={require('./images/city_more.jpg')}
+              source={require('../../images/city_more.jpg')}
             />
           </View>
           <View style={styles.viewTimeParent}>
@@ -59,7 +59,7 @@ const Home = (props) => {
         </View>
         <View style={{ height: 12 }} />
         <Image
-          source={require('./images/wechat_code.jpg')}
+          source={require('../../images/wechat_code.jpg')}
           style={styles.wechatCode}
         />
         <View style={{ height: 8 }} />
@@ -81,7 +81,7 @@ const Home = (props) => {
               Picker.show();
             }}
             onItemPress={() => {
-              Alert.alert('提示', '网络错误，请稍后重试', [{ text: '确定', onPress: () => { } }])
+              props.navigation.navigate('History')
             }}
           />
           <Vaccin
@@ -95,7 +95,7 @@ const Home = (props) => {
           />
         </View>
         <Image
-          source={require('./images/wechat_footer.jpg')}
+          source={require('../../images/wechat_footer.jpg')}
           style={styles.wechatFooter}
         />
       </ScrollView>

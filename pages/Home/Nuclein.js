@@ -26,7 +26,7 @@ const Nuclein = props => {
     // 更早的时间
     return isReact3Day ? <View style={styles.viewRecent}>
       <Text style={styles.textRecentTime}>{props.duration}</Text>
-      <View style={{width: 2}} />
+      <View style={{ width: 2 }} />
       <View style={styles.viewRecentRight}>
         <Text style={styles.textRecentRight}>小时</Text>
         <Text style={styles.textRecentRight}>阴性</Text>
@@ -35,7 +35,7 @@ const Nuclein = props => {
       <Text style={styles.textMessage}>阴性</Text>
     </View>
   }
-  
+
   return (
     <TouchableOpacity
       style={styles.all}
@@ -48,12 +48,12 @@ const Nuclein = props => {
     >
       <LinearGradient style={styles.viewLinear} colors={colors[props.duration] || ['#ffffff', '#ffffff']}>
         <View style={styles.viewTitle}>
-          <Image source={require('./images/item_ok.png')} style={[styles.imageImage, { tintColor: isReact3Day ? 'white' : '#3db36e' }]} />
+          <Image source={require('../../images/item_ok.png')} style={[styles.imageImage, { tintColor: isReact3Day ? 'white' : '#3db36e' }]} />
           <View style={{ width: 4 }} />
           <Text style={[styles.textTitle, { color: isReact3Day ? 'white' : 'black' }]}>核酸检测</Text>
           <View style={{ width: 4 }} />
           <Image
-            source={require('./images/item_more.png')}
+            source={require('../../images/item_more.png')}
             style={[styles.imageMore, { tintColor: isReact3Day ? 'white' : 'grey' }]}
           />
         </View>

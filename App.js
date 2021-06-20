@@ -7,8 +7,8 @@ import {
 } from "@react-navigation/stack";
 
 
-import Home from "./Home";
-import History from './History';
+import Home from "./pages/Home";
+import History from './pages/History';
 
 const Stack = createStackNavigator();
 

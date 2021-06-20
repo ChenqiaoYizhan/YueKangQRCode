@@ -18,12 +18,12 @@ const Vaccin = props => {
       props.onItemPress()
     }}>
       <View style={styles.viewTitle}>
-        <Image source={require('./images/item_information.jpg')} style={styles.imageImage} />
+        <Image source={require('../../images/item_information.jpg')} style={styles.imageImage} />
         <View style={{ width: 4 }} />
         <Text style={styles.textTitle}>新冠疫苗</Text>
         <View style={{ width: 4 }} />
         <Image
-          source={require('./images/item_more.png')}
+          source={require('../../images/item_more.png')}
           style={styles.imageMore}
         />
       </View>
