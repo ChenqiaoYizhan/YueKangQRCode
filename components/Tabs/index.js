@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   AppRegistry,
   View,
@@ -6,39 +6,48 @@ import {
   Text,
   SafeAreaView,
   TouchableOpacity,
-  Image
+  Image,
 } from 'react-native';
 
 const Tabs = props => {
-  const [index, setIndex] = useState(0)
+  const [index, setIndex] = useState(0);
   const loadTabs = () => {
     let array = [];
     for (let i = 0; i < props.tabs.length; i++) {
       let item = props.tabs[i];
-      array.push(<TouchableOpacity key={i} style={styles.viewItem}
-        onPress={() => {
-          setIndex(i);
-          props.onTabPress(item)
-        }}
-      >
-        <Text style={[styles.text, { color: index === i ? '#2496f9' : 'grey' }]}>{item}</Text>
-        <View style={{ height: 12 }} />
-        <View style={[styles.viewLine, { backgroundColor: index === i ? '#2496f9' : 'white' }]} />
-      </TouchableOpacity>)
+      array.push(
+        <TouchableOpacity
+          key={i}
+          style={styles.viewItem}
+          onPress={() => {
+            setIndex(i);
+            props.onTabPress(item);
+          }}>
+          <Text
+            style={[styles.text, {color: index === i ? '#2496f9' : 'grey'}]}>
+            {item}
+          </Text>
+          <View style={{height: 12}} />
+          <View
+            style={[
+              styles.viewLine,
+              {backgroundColor: index === i ? '#2496f9' : 'white'},
+            ]}
+          />
+        </TouchableOpacity>,
+      );
     }
     return array;
-  }
-  return <View style={styles.all}>
-    {loadTabs()}
-  </View>
-}
+  };
+  return <View style={styles.all}>{loadTabs()}</View>;
+};
 
 const styles = StyleSheet.create({
   all: {
     flexDirection: 'row',
     alignItems: 'center',
     display: 'flex',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
   },
   text: {
     color: 'blue',
@@ -46,15 +55,15 @@ const styles = StyleSheet.create({
   },
   viewLine: {
     height: 2,
-    width: 128
+    width: 128,
   },
   viewItem: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    display: 'flex'
-  }
-})
+    display: 'flex',
+  },
+});
 
-export default Tabs
+export default Tabs;

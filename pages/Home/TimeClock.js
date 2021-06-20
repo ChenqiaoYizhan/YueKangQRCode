@@ -6,16 +6,11 @@
  * @flow strict-local
  */
 
-import React, { useEffect, useState } from 'react';
-import {
-  Dimensions,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Dimensions, StyleSheet, Text, View} from 'react-native';
 import moment from 'moment';
 
-const TimeClock = (props) => {
+const TimeClock = props => {
   const [time, setTime] = useState('');
 
   let timer = null;
@@ -28,9 +23,11 @@ const TimeClock = (props) => {
     };
   }, []);
 
-  return <View style={styles.viewTimeParent}>
-    <Text style={styles.fontCityTime}>{time}</Text>
-  </View>
+  return (
+    <View style={styles.viewTimeParent}>
+      <Text style={styles.fontCityTime}>{time}</Text>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({

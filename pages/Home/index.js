@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Dimensions,
   StyleSheet,
@@ -15,36 +15,36 @@ import {
   Image,
   ScrollView,
   Alert,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 import moment from 'moment';
 import Vaccin from './Vaccin';
 import Nuclein from './Nuclein';
 import Picker from 'react-native-picker';
-import City from '../City'
+import City from '../City';
 import TimeClock from './TimeClock';
 
-const Home = (props) => {
+const Home = props => {
   const [nucleinTime, setNucleinTime] = useState('48');
   const [city, setCity] = useState('深圳');
   const [showCityModal, setShowCityModal] = useState(false);
 
   return (
     <View style={styles.all}>
-      <View style={{ height: 44 }} />
+      <View style={{height: 44}} />
       <Image
         source={require('../../images/wechat_tabbar.jpg')}
         style={styles.wechatHeader}
       />
-      <ScrollView style={{ flex: 1 }}>
+      <ScrollView style={{flex: 1}}>
         <View style={styles.viewCityTime}>
-          <TouchableOpacity style={styles.viewCityMore}
+          <TouchableOpacity
+            style={styles.viewCityMore}
             onPress={() => {
-              setShowCityModal(true)
-            }}
-          >
+              setShowCityModal(true);
+            }}>
             <Text style={styles.fontCityTime}>{city}</Text>
-            <View style={{ width: 4 }} />
+            <View style={{width: 4}} />
             <Image
               style={styles.imageCityMore}
               source={require('../../images/city_more.jpg')}
@@ -52,40 +52,45 @@ const Home = (props) => {
           </TouchableOpacity>
           <TimeClock />
         </View>
-        <View style={{ height: 12 }} />
+        <View style={{height: 12}} />
         <Image
           source={require('../../images/wechat_code.jpg')}
           style={styles.wechatCode}
         />
-        <View style={{ height: 8 }} />
+        <View style={{height: 8}} />
         <View style={styles.viewItems}>
           <Nuclein
             duration={nucleinTime}
-            time={moment().add(nucleinTime == '近一周' ? -120 : -(parseInt(nucleinTime) + 6), 'hours').format('YYYY-MM-DD HH:mm')}
+            time={moment()
+              .add(
+                nucleinTime == '近一周' ? -120 : -(parseInt(nucleinTime) + 6),
+                'hours',
+              )
+              .format('YYYY-MM-DD HH:mm')}
             onItemLongPress={() => {
               Picker.init({
                 pickerData: ['48', '72', '近一周'],
                 onPickerConfirm: (pickedValue, pickedIndex) => {
-                  setNucleinTime(pickedValue)
+                  setNucleinTime(pickedValue);
                 },
-                onPickerCancel: (pickedValue, pickedIndex) => {
-                },
-                onPickerSelect: (pickedValue, pickedIndex) => {
-                }
-              })
+                onPickerCancel: (pickedValue, pickedIndex) => {},
+                onPickerSelect: (pickedValue, pickedIndex) => {},
+              });
               Picker.show();
             }}
             onItemPress={() => {
-              props.navigation.navigate('History')
+              props.navigation.navigate('History');
             }}
           />
           <Vaccin
             message="暂未查询到数据"
             onItemPress={() => {
-              Alert.alert('提示', '未查询到相关记录', [{
-                text: '确定', onPress: () => {
-                }
-              }])
+              Alert.alert('提示', '未查询到相关记录', [
+                {
+                  text: '确定',
+                  onPress: () => {},
+                },
+              ]);
             }}
           />
         </View>
@@ -93,13 +98,16 @@ const Home = (props) => {
           source={require('../../images/wechat_footer.jpg')}
           style={styles.wechatFooter}
         />
-        <City show={showCityModal} onClose={() => {
-          setShowCityModal(false)
-        }}
-          onCityPress={(s) => {
-            setCity(s)
-            setShowCityModal(false)
-          }} />
+        <City
+          show={showCityModal}
+          onClose={() => {
+            setShowCityModal(false);
+          }}
+          onCityPress={s => {
+            setCity(s);
+            setShowCityModal(false);
+          }}
+        />
       </ScrollView>
     </View>
   );

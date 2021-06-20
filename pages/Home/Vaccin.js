@@ -1,5 +1,5 @@
 // 疫苗接种
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Dimensions,
   StyleSheet,
@@ -7,36 +7,38 @@ import {
   View,
   Image,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 
 const Vaccin = props => {
   return (
-    <TouchableOpacity style={styles.all} onPress={() => {
-      props.onItemPress()
-    }}>
+    <TouchableOpacity
+      style={styles.all}
+      onPress={() => {
+        props.onItemPress();
+      }}>
       <View style={styles.viewTitle}>
-        <Image source={require('../../images/item_information.jpg')} style={styles.imageImage} />
-        <View style={{ width: 4 }} />
+        <Image
+          source={require('../../images/item_information.jpg')}
+          style={styles.imageImage}
+        />
+        <View style={{width: 4}} />
         <Text style={styles.textTitle}>新冠疫苗</Text>
-        <View style={{ width: 4 }} />
+        <View style={{width: 4}} />
         <Image
           source={require('../../images/item_more.png')}
           style={styles.imageMore}
         />
       </View>
-      <Text style={styles.textMessage}>
-        {props.message}
-      </Text>
+      <Text style={styles.textMessage}>{props.message}</Text>
       <Text style={styles.textTimeOrArea}>由接种点上报</Text>
     </TouchableOpacity>
   );
 };
 
-Vaccin.propTypes = {
-}
+Vaccin.propTypes = {};
 
 const styles = StyleSheet.create({
   all: {
@@ -66,12 +68,12 @@ const styles = StyleSheet.create({
   imageMore: {
     height: 14,
     width: 14,
-    tintColor: 'grey'
+    tintColor: 'grey',
   },
   textMessage: {
     fontSize: 20,
     fontWeight: '400',
-    color: 'grey'
+    color: 'grey',
   },
   textTimeOrArea: {
     fontSize: 16,
