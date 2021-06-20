@@ -15,26 +15,19 @@ import {
   Image,
   ScrollView,
   Alert,
+  TouchableOpacity
 } from 'react-native';
 import moment from 'moment';
 import Vaccin from './Vaccin';
 import Nuclein from './Nuclein';
 import Picker from 'react-native-picker';
+import City from '../City'
+import TimeClock from './TimeClock';
 
 const Home = (props) => {
-  const [time, setTime] = useState('');
   const [nucleinTime, setNucleinTime] = useState('48');
-
-  let timer = null;
-
-  useEffect(() => {
-    timer = setInterval(() => {
-      setTime(moment().format('YYYY-MM-DD HH:mm:ss'));
-    }, 1000);
-    return () => {
-      timer && clearInterval(timer);
-    };
-  }, []);
+  const [city, setCity] = useState('深圳');
+  const [showCityModal, setShowCityModal] = useState(false);
 
   return (
     <View style={styles.all}>
@@ -45,17 +38,19 @@ const Home = (props) => {
       />
       <ScrollView style={{ flex: 1 }}>
         <View style={styles.viewCityTime}>
-          <View style={styles.viewCityMore}>
-            <Text style={styles.fontCityTime}>深圳</Text>
+          <TouchableOpacity style={styles.viewCityMore}
+            onPress={() => {
+              setShowCityModal(true)
+            }}
+          >
+            <Text style={styles.fontCityTime}>{city}</Text>
             <View style={{ width: 4 }} />
             <Image
               style={styles.imageCityMore}
               source={require('../../images/city_more.jpg')}
             />
-          </View>
-          <View style={styles.viewTimeParent}>
-            <Text style={styles.fontCityTime}>{time}</Text>
-          </View>
+          </TouchableOpacity>
+          <TimeClock />
         </View>
         <View style={{ height: 12 }} />
         <Image
@@ -98,6 +93,13 @@ const Home = (props) => {
           source={require('../../images/wechat_footer.jpg')}
           style={styles.wechatFooter}
         />
+        <City show={showCityModal} onClose={() => {
+          setShowCityModal(false)
+        }}
+          onCityPress={(s) => {
+            setCity(s)
+            setShowCityModal(false)
+          }} />
       </ScrollView>
     </View>
   );
@@ -126,14 +128,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'space-between',
     paddingHorizontal: 20,
-  },
-  viewTimeParent: {
-    backgroundColor: '#3c7dd3',
-    borderRadius: 20,
-    paddingVertical: 8,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    width: Dimensions.get('screen').width * 0.68,
   },
   all: {
     flex: 1,

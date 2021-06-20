@@ -10,6 +10,7 @@ import {
 import TabBar from '../../components/TabBar';
 import Tabs from '../../components/Tabs';
 import List from './List';
+
 const History = props => {
   const [datas, setDatas] = useState([])
 
@@ -22,6 +23,15 @@ const History = props => {
         '阴性'
       ]))
   }
+
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      setDatas(createDatas())
+    }, 1000)
+    return () => {
+      timer && clearTimeout(timer)
+    }
+  }, []);
 
   return <SafeAreaView style={styles.all}>
     <View style={styles.all}>
